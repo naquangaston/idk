@@ -1,1 +1,1 @@
-# idk
+# NEW vrc mod installer
