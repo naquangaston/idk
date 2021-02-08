@@ -1,0 +1,271 @@
+<input id="dir" placeholder="Enter ur vrchat dir"><span>  </span><input id="dir2" placeholder="Enter ur download location"><br>
+<span>output</span><br>
+<button id='Download'>Download</button>
+<span> </span><button id='loadJS'>loadJSON</button>
+<span> </span><button id='Djason'>Downlaod JSON</button>
+<textarea id="input2" style="display:none">\mods</textarea><br>
+<textarea id="input3" style="display:none">\</textarea><br>
+<h1>Mod Select</h1>
+<style>
+body{
+background:black;
+color:red;
+}
+.desc{
+color:blue;
+}
+</style>
+<script>
+    function msg(a) {
+        return `PowerShell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('${a}')"`;
+}
+loadJS.onlick=function(){
+localStorage=prompt('enter JSON')
+
+}
+Djason.onclick=function(){
+download('Your JSON.txt',JSON.stringify(localStorage),0)
+
+}
+    function a(b, h, j) {
+        var c = b.length;
+        var e = 0;
+        var f = 0;
+        var g = [];
+        var i = '';
+        for (let d = 0; d < c; d++) {
+            e = ((d / c) * 100).toFixed(1);
+            if (f != e) {
+                i = b[d].includes(j?j:'title') ? b[d].split(j?j:'title ')[1] : b[d];
+                f = e;
+                console.log(i);
+                g.push(b[d])
+                g.push(`cls
+echo .
+echo .
+echo "Installing${(i ? '|Task ' + i : '')}"
+echo ----------------------------------
+echo Progress: ${e}%%
+echo ----------------------------------
+`)
+            }
+        }
+        return h ? g.join(h) : g;
+    }
+function getJSON(stuff){
+var name=stuff.split('\n')[0];
+var version=stuff.split('\n')[2];
+var melon=stuff.split('\n')[4];
+var dll=stuff.split('\n')[8];
+var maker=stuff.split('\n')[10];
+var desc=stuff.split('\nDownload')[0].split('Description\n')[1].split('"').join("'")
+console.log(desc)
+var dl=stuff.split('Download\n')[1].split('\nSource')[0];
+var source=stuff.split('Source Code\n')[1]
+var info={name:name,version:version,desc:desc,Author:maker,dllVersion:dll,download:dl,source:SourceBuffer}
+return JSON.stringify(info)
+};
+window.getJSON=getJSON
+var vrc_=[{"name":"DesktopCamera","version":"Build 1017","desc":"A mod that allows Desktop users to use the VRChat Camera feature and makes it easier to use for VR users, yay!","Author":"nitro.","dllVersion":"v1.1.2","download":"https://github.com/nitrog0d/DesktopCamera/releases/download/v1.1.2/DesktopCamera.dll"},{"name":"OGTrustRanks","version":"Build 996","desc":"Mod for VRChat using MelonLoader\n\nBrings back Veteran and Legendary Trust Ranks to the game.\nYou can edit the Colors for Veteran and Legendary in your Mod Preferences.\n\nDISCLAIMER: Only shows Veteran and Legendary for people with the Mod.","Author":"Herp Derpinstine, Emilia, and dave-kun","dllVersion":"1.0.7","download":"https://github.com/HerpDerpinstine/OGTrustRanks/releases/download/v1.0.7/OGTrustRanks.dll"},{"name":"ComfyVRMenu","version":"Build 984","desc":"This mod will allow the big menu to open directly in front of your viewpoint when you are in VR, instead of down in it's default position. Useful for people who like laying down in VR and don't want to break their neck when trying to open the menu.","Author":"<@!118484050217402370>","dllVersion":"1.0.0","download":"https://github.com/M-oons/VRChat-Mods/releases/download/ComfyVRMenu-1.0.0/ComfyVRMenu.dll"},{"name":"RankVolumeControl","version":"Build 956","desc":"A MelonLoader mod to control player volume on VRChat based on their rank.","Author":"dave, knah (NetworkManagerHooks)","dllVersion":"1.0.0","download":"https://github.com/dave-kun/RankVolumeControl/releases/download/1.0.0/RankVolumeControl.dll"},{"name":"ITR's Player Tracer","version":"Build 946","desc":"Adds colored lines between you and every other player in the world (ctrl+t). Read the readme for more info: https://github.com/ITR13/ITR-sPlayerTracer/blob/1.0.0/README.md","Author":"ITR","dllVersion":"1.0.1","download":"https://github.com/ITR13/ITR-sPlayerTracer/releases/download/1.0.1/VrcTracer.dll"},{"name":"PortableMirror","version":"Build 946","desc":"Allows you to spawn a portable mirror wherever you are, in any world using the configured keybind (Default: Alpha1). The mirror can be picked up when the config option is enabled. Creates a quick menu button if you have UIExpansionKit. The mod can be configured in UserDatamodprefs.ini","Author":"<@!118484050217402370>","dllVersion":"1.2.0","download":"https://github.com/M-oons/VRChat-Mods/releases/download/PortableMirror-1.2.0/PortableMirror.dll"},{"name":"DesktopFOV","version":"Build 946","desc":"Allows you to change your field of view in desktop mode. Also adds an 'Optifine' zoom feature, allowing you to zoom in when holding the configured keybind. The mod can be configured in UserDatamodprefs.ini","Author":"<@!118484050217402370>","dllVersion":"1.1.0","download":"https://github.com/M-oons/VRChat-Mods/releases/download/DesktopFOV-1.1.0/DesktopFOV.dll"},{"name":"Double-Tap Runner","version":"1004","desc":"[Bugfix] Sometimes got stuck applying preferences.\nAllows you to increase your speed by double-tapping forward with customizable multiplier.\nIncludes several settings that can be changed and works on the fly with both VR and Desktop during same game session so yes you can plugin your xbox controller if you want to.\nGame worlds are disallowed and will use EmmVRC Riskyfunction check too","Author":"Psychloor","dllVersion":"1.2.0","download":"https://github.com/Psychloor/DoubleTapRunner/releases/download/1.2.0/DoubleTapRunner.dll"},{"name":"Player Rotater (Desktop Only)","version":"1004","desc":"Allows you to rotate yourself around and fly a little to reposition yourself.\nSpeed settings and toggle for no-clipping (up/down still no-clips).\nWill check EmmVRC and game worldtags to see if it's allowed.\nNeeds UiExpansionKit and Check Github for controls.","Author":"Psychloor","dllVersion":"1.2.0","download":"https://github.com/Psychloor/PlayerRotater/releases/download/1.2.0/PlayerRotater.dll"},{"name":"Invite+ fix","version":"2020.4.1p5","desc":"Allows you to invite friends to invite+ worlds without them requesting first.","Author":"MarkViews","dllVersion":"1.0","download":"https://github.com/markviews/Invite-fix/releases/download/1.0/Invite+.fix.dll"},{"name":"VRCEyeTracking","version":"1010","desc":"Eye Tracking Mod for Vive Pro Eye users to enable AV3 Avatars to interact with SRanipal Eye Tracking SDK","Author":"Benaclejames","dllVersion":"1.1.1","download":"https://github.com/benaclejames/VRCEyeTracking/releases/download/v1.1.1/VRCEyeTracking.zip"},{"name":"emmVRC","version":"2020.4.1","desc":"emmVRC is a quality of life mod that includes several features, such as:\n• Global Dynamic Bones\n• Avatar favorites\n• Avatar searching\n• Messaging, both through emmVRC Network and invites\n• UI Color changing, including the loading screen and selection outlines, as well as custom nameplate colors\n• Quick Menu clock, with an instance timer\n• Local spoofing of information, such as your VRChat name\n• UI Tweaks, such as disabling unnecessary buttons\n• User and World notes, to help keep track of friends and world information\n• Instance Owner Indicator\n• Risky Functions, including flight, noclip, speed and teleporting, in approved worlds\n\n...and much more to come!","Author":"emmVRC Team","dllVersion":"Loader 1.1.0","download":"https://thetrueyoshifan.com/downloads/emmVRCLoader.dll"},{"name":"AvatarStatsShowAuthor","version":"Build 1005","desc":"Adds a Show Avatar Author button to Avatar Stats","Author":"Herp Derpinstine & dave-kun","dllVersion":"1.0.4","download":"https://github.com/HerpDerpinstine/AvatarStatsShowAuthor/releases/download/1.0.4/AvatarStatsShowAuthor.dll"},{"name":"AvatarStatsShowAuthor","version":"Build 1005","desc":"Adds a Show Avatar Author button to Avatar Stats","Author":"Herp Derpinstine & dave-kun","dllVersion":"1.0.4","download":"https://github.com/HerpDerpinstine/AvatarStatsShowAuthor/releases/download/1.0.4/AvatarStatsShowAuthor.dll"},{"name":"BetterLoadingScreen","version":"2020.4.1p4","desc":"Changes the loading screen to something reminiscent of the old Warp Tunnel loading screen.\nCustomizability coming soon!","Author":"<@!168795588366696450>","dllVersion":"v0.6.1","download":"https://github.com/Grummus/BetterLoadingScreen/releases/download/v0.6.1/BetterLoadingScreen.dll"},{"name":"RememberMe","version":"Build 1010","desc":"Adds a 'Remember Me' check-box to the Login screen.\nWhen 'Remember Me' is checked off it will auto-fill the last saved VRChat Credentials.","Author":"Herp Derpinstine & dave-kun","dllVersion":"1.0.3","download":"https://github.com/HerpDerpinstine/RememberMe/releases/download/v1.0.3/RememberMe.dll"},{"name":'GamePriority',"version":'Universal',"desc":'Using MelonLoader, this is a universal mod that allows you to set the games process priority with either Normal or High',"Author":'@KortyBoi',"dllVersion":'1.1.1',"download":'https://github.com/KortyBoi/GamePriority/releases/download/1.1.1/UniversalGamePriorityMod.dll'},{"name":'MenuOverrender',"version":'2020.4.4p1',"desc":'Moves the menu rendering to its own camera to make it very difficult for avatars to overrender your UI (AdvancedSafety is recommended to prevent avatars from using the UI layers)\n\nWARNING: This may considerably drop your FPS!',"Author":'Ben',"dllVersion":'1.0.5',"download":'https://github.com/BenjaminZehowlt/MenuOverrender/releases/download/1.0.5/VRC-MenuOverrender.dll'},{"name":'WorldPredownload',"version":'Build 1031',"desc":'Information:\n-Lets you predownload worlds from the world info page, friend info page or from an invite.\n-Download Status can be found as well on the bottom of the quickmenu.\n-Switching world while downloading will cancel current download.\n-Mod now checks to see if world has been downloaded previously on world info page and user info page.\n-It cant currently check invites due to false positives.\n-Mod is useful if you have particularly bad internet and dont fancy hanging around in the loading screen for a decade.\n-Requires UIX 2.0+.\n-Compatible with AdvancedInvites\n-Options to follow predownloads configurable via UIX',"Author":'gompo#6956',"dllVersion":'1.3.2.1',"download":'https://github.com/gompocp/WorldPredownload/releases/download/v1.3.2.1/WorldPredownload.dll'},{"name":'DownloadFix',"version":'Build 1031',"desc":'Information\n-Requires UIX 2.0+\n-Helps when avatars and worlds stop loading properly until you restart the game\n-Mod simply lets you unblock the asset unpack queue\n-Buttons to unblock the queue are on the loading screen and on the uix settings page\n-This mod will NOT help if your cache is full\n-If there are many avatars stuck, this mod will lag the ** out of you for a few seconds so try do it as soon as you notice the bug.',"Author":'gompo#6956',"dllVersion":'1.0.1',"download":'https://github.com/gompocp/DownloadFix/releases/download/v1.0.1/DownloadFix.dll'},{"name":'DiscordMute',"version":'Build 1031',"desc":'Requires UIExpansionKit to work.\n\nConfigure the mod with your Discord "Toggle Mute" Keybind in QuickMenu or Settings Menu, when done, you can use the "Discord" button, next to VRChat Mute.',"Author":'@Rafa',"dllVersion":'1.0.0',"download":'https://github.com/Rafacasari/DiscordMute/releases/download/1.0.0/DiscordMute.dll'},{"name":'PlayspaceMover',"version":'Build 1031',"desc":'Hold [X] or [A] in Touch Controllers and move to climb on air.\nDouble Click the same buttons to reset your position.\n\nWARNING: Only works in VRChat for Oculus.',"Author":'@Rafa',"dllVersion":'1.1.0',"download":'https://github.com/Rafacasari/Playerspace-Mover/releases/download/1.1.0/PlayspaceMover.dll'},{"name":'UserInfoExtensions',"version":'1031',"desc":'Adds a few new buttons to the Social page to make VRChat a better game.\n\nFeatures:\n- Adds a button that opens a user in the Quick Menu from the Social Menu page\n- Adds a button that allows you to get the avatars author from the Social Menu page\n- Adds a buttons that shows you the selected users bio',"Author":'loukylor',"dllVersion":'1.1.1',"download":'https://github.com/loukylor/UserInfoExtensions/releases/download/1.1.1/UserInfoExtentions.dll'},{"name":'CloningBeGone',"version":'1031',"desc":'Turns off cloning when you join an instance.',"Author":'loukylor',"dllVersion":'1.0.0',"download":'https://github.com/loukylor/CloningBeGone/releases/download/1.0.0/CloningBeGone.dll'},{"name":'AdvancedInvites',"version":'Build 1031',"desc":'Allows you to choose between going yourself to the invite you got or drop a portal to the instance you got invited to.\nDoesnt let you drop a portal if its Friends only or Private(Invite) single button popup.\nBlack/Whitelist system to block invite/requests from blacklisted people/worlds(invites) and auto-accept requests from whitelisted people (unless private non-owner or incompatible platform).\nOption to delete notifications after use and toggle black/whitelist separately.\nCan also handle all black/white listed users/worlds in-game.\nNotification sound added and can be changed by replacing/adding UserData/AdvancedInvites/Notification.ogg.\nRequires UI Expansion Kit 0.2.0+',"Author":'Psychloor',"dllVersion":'1.5.4',"download":'https://github.com/Psychloor/AdvancedInvites/releases/download/1.5.4/AdvancedInvites.dll'},{"name":'OwO Mod',"version":'Universal',"desc":'It OwOifies text!\nConfig can be found in ModsOwO_Mod.txt\n\nOwOifies:\n- MelonLogger\n- Text\n- TextMesh',"Author":'DubyaDude (Help from Hector Panzer, Herp Derpinstine and xKiraiChan)',"dllVersion":'5.0.0-Cutie',"download":'https://github.com/DubyaDude/OwO-Mod/releases/download/Cutie-5.0/OwO-Mod.dll'},{"name":'Loading Screen Pictures',"version":'Build 1027',"desc":'Replaces the tips in the loading screen with pictures from your VRChat screenshots folder.',"Author":'MarkViews',"dllVersion":'1.2.1',"download":'https://github.com/markviews/LoadingScreenPictures/releases/download/1.2.1/Loading.screen.pictures.dll'},{"name":'TogglePostProcessing',"version":'Build 1030',"desc":'Adds the feature of toggling post processing on or off in worlds through UserData/modprefs.ini or through UIExpansionKit.',"Author":'@Dawn',"dllVersion":'1.1.1',"download":'https://github.com/Arion-Kun/TogglePostProcessing/releases/download/1.1.1/TogglePostProcessing.dll'},{"name":'OldMate',"version":'VRChat Build 1027',"desc":'A MelonLoader mod which allows you to assign custom nicknames to players. UIExpansionKit is required.',"Author":'dave-kun, knah',"dllVersion":'1.4.0',"download":'https://github.com/dave-kun/OldMate/releases/download/1.4.0/OldMate.dll'},{"name":'AvatarHider',"version":'Build 1027',"desc":'This mod will automatically hide avatars based on the distance away from you.\nTheres no real reason to render avatars that you dont even pay attention to, right?\n\nFor the best experience, it is recommended to run this mod with UIExpansionKit.\n"Hide Distance" is customizable and can be changed in meters (default is 7 meters).\nFriends avatars are ignored by default, but can be turned off if needed.',"Author":'@ImTiara',"dllVersion":'1.1.0',"download":'https://github.com/ImTiara/AvatarHider/releases/download/1.1.0/AvatarHider.dll'},{"name":'BTKSANameplateMod',"version":'Build 1031',"desc":'NameplateMod is a small compilation mod with a few nameplate changes in it!\n\nFeatures:\n- Show trust colours on nameplate (OGTrustRanks compatible!)\n- Set name text colour to trust colour\n- Hide nameplates on friends only\n- Per user nameplate visibility toggling\n- Make the nameplate background an outline\n\nMore features are in progress! Expect updates soon!\n\nCheck out the Github readme to get more details on features!',"Author":'DDAkebono',"dllVersion":'2.2.0',"download":'https://github.com/ddakebono/BTKSANameplateFix/releases/download/2.2.0/BTKSANameplateFix.dll'},{"name":'Multiplayer Dynamic Bones',"version":'VRChat 2020.4.4p1, build 1031',"desc":'Makes dynamic bones multiplayer, allowing other players to interact with yours and vice versa, in addition to optimize dynamic bones in order not to drop frames. You can see all possible configuration options in userprefs.ini, under UserData in the mods folder, or ingame if you use UiExpansionKit.',"Author":'DltDat',"dllVersion":'build 35',"download":'https://github.com/charlesdeepk/MultiplayerDynamicBonesMod/releases/download/35/DBMod.dll'},{"name":'FBT Saver',"version":'1017',"desc":'Saves full body tracking calibration across avatars. It works best with avatars that have very similar armatures. If the armature doesnt match and your calibration is broken, youll have to calibrate just like without the mod.\nNEW: Now FBT Saver will save your calibration on a per-avatar basis. So if youve already calibrated into that avatar once, you dont have to do it again if the previous calibration wont match.\n\nIt also saves those avatar calibrations to your disk, so if your trackers are always in the same position, it will even save across VRChat sessions.',"Author":'@Requi',"dllVersion":'1.1.2',"download":'https://github.com/RequiDev/FBTSaver/releases/download/v1.1.2/FBT.Saver.dll'},{"name":'Dynamic Bones Safety',"version":'2020.4.3',"desc":'Adds an extra button to the safety menu to be able to toggle dynamic bones on or off trust ranks. Such as only having them enabled for friends.',"Author":'Ben',"dllVersion":'1.1.0',"download":'https://github.com/BenjaminZehowlt/DynamicBonesSafety/releases/download/1.1.0/DynamicBonesSafety.dll'},{"name":'ActionMenuRespawn',"version":'Build 1026',"desc":'Lets you respawn or go home using the action menu. Buttons can be found under the options menu in help. Useful for when you are falling constantly and want a quick exit or broken worlds without a floor at all where respawning wont save you',"Author":'gompo#6956',"dllVersion":'1.1.4',"download":'https://github.com/gompocp/ActionMenuRespawn/releases/download/v1.1.4/ActionMenuRespawn.dll'},{"name":'VRC-Minus',"version":'Build 1026',"desc":'Removes the obnoxious clutter of VRC+ from the Menu and makes the Menu Pet funny, customizable, and available for even non-subbed members.\n\nPut the Image you want your Menu Pet to appear as in UserData/Custom_Menu_Pet/animal.png\nPut all your Normal Phrases you want your Menu Pet to say randomly in UserData/Custom_Menu_Pet/normal_phrases.txt\nPut all your Poke Phrases you want your Menu Pet to say when you poke it in UserData/Custom_Menu_Pet/poke_phrases.txt',"Author":'Herp Derpinstine',"dllVersion":'1.0.5',"download":'https://github.com/HerpDerpinstine/VRC-Minus/releases/download/1.0.5/VRC-Minus.dll'},{"name":'FavCat',"version":'Build 1026',"desc":'An all-in-one local favorites mod. Unlimited favorite lists with unlimited favorites in them and a searchable local database of content and players.\nRequires UIExpansionKit 0.2.0 or newer\nFeatures:\n* Unlimited lists (categories) for favorites, each of unlimited size\n* Lag-free even with large lists\n* Freely changeable list height\n* Avatar, world, and player favorites supported\n* Modifiable list order and multiple list sorting options\n* Fully searchable database of everything you have ever seen\n* Changeable database location (its recommended to store the database in a directory backed up to cloud storage, such as Dropbox or OneDrive, see README)\n* Local image cache for even better performance\n* Categorize your own private avatars\n* Import avatar favorites from other local favorite mods (check README)\n* Exchange search database with friends (check README)\n* Many more small things\n\nCheck the README for more info and docs: https://github.com/knah/VRCMods#favcat',"Author":'knah',"dllVersion":'1.0.3',"download":'https://github.com/knah/VRCMods/releases/download/fc-1.0.3/FavCat-merged.dll'},{"name":'RemoveChairs',"version":'1017',"desc":'A very simple mod which adds an Enable and Disable Chairs button to the Worlds menu that will locally toggle all active chairs in a world. Useful for when map makers put chairs in inconvenient locations and dont have a way to disable them.',"Author":'Nirvash',"dllVersion":'1.1.5',"download":'https://github.com/Dervali-git/Dervali-VRCMods/releases/download/RemoveChairsV1.1.5/RemoveChairs_Mod.dll'},{"name":'NearClipPlaneAdj',"version":'1017',"desc":'This is a mod for adjusting the near clipping plane for the players camera. This can allow you to get much closer to objects before they start clipping and be used for seeing your limbs with a VERY small avatar.',"Author":'Nirvash',"dllVersion":'1.3.6',"download":'https://github.com/Dervali-git/Dervali-VRCMods/releases/download/Nearclip1.3.6/NearClippingPlaneAdjuster.dll'},{"name":'PlayspaceMover',"version":'Build 1031',"desc":'Hold [X] or [A] in Touch Controllers and move to climb on air.\nDouble Click the same buttons to reset your position.\n\nWARNING: Only works in VRChat for Oculus.',"Author":'@Rafa',"dllVersion":'1.1.0',"download":'https://github.com/Rafacasari/Playerspace-Mover/releases/download/1.1.0/PlayspaceMover.dll'},{"name":'UserInfoExtensions',"version":'1031',"desc":'Adds a few new buttons to the Social page to make VRChat a better game.\n\nFeatures:\n- Adds a button that opens a user in the Quick Menu from the Social Menu page\n- Adds a button that allows you to get the avatars author from the Social Menu page\n- Adds a buttons that shows you the selected users bio',"Author":'loukylor',"dllVersion":'1.1.1',"download":'https://github.com/loukylor/UserInfoExtensions/releases/download/1.1.1/UserInfoExtentions.dll'},{"name":'CloningBeGone',"version":'1031',"desc":'Turns off cloning when you join an instance.',"Author":'loukylor',"dllVersion":'1.0.0',"download":'https://github.com/loukylor/CloningBeGone/releases/download/1.0.0/CloningBeGone.dll'},{"name":'AdvancedInvites',"version":'Build 1031',"desc":'Allows you to choose between going yourself to the invite you got or drop a portal to the instance you got invited to.\nDoesnt let you drop a portal if its Friends only or Private(Invite) single button popup.\nBlack/Whitelist system to block invite/requests from blacklisted people/worlds(invites) and auto-accept requests from whitelisted people (unless private non-owner or incompatible platform).\nOption to delete notifications after use and toggle black/whitelist separately.\nCan also handle all black/white listed users/worlds in-game.\nNotification sound added and can be changed by replacing/adding UserData/AdvancedInvites/Notification.ogg.\nRequires UI Expansion Kit 0.2.0+',"Author":'Psychloor',"dllVersion":'1.5.4',"download":'https://github.com/Psychloor/AdvancedInvites/releases/download/1.5.4/AdvancedInvites.dll'},{"name":"MicSensitivity","version":"Build 1017","desc":"MicSensitivity allows you to change your Microphone's Sensitivity.\nWARNING: It is HIGHLY recommended to use UIExpansionKit to adjust Sensitivity Values.\nTo Manually change this without UIExpansionKit adjust the value in UserDatamodprefs.ini\nDefault Sensitivity is 100\nSensitivity Higher than 100 will make it harder for people to hear you.\nLower then 100 will make it easier for people to hear you.\nThis does not change your Volume ingame.","Author":"@arion","dllVersion":"1.3","download":"https://github.com/Arion-Kun/MicSensitivity/releases/download/1.3/MicSensitivity.dll"},{"name":"AntiUdonExploits","version":"Build 1017","desc":"This mod will prevent certain Udon exploits from affecting you, such as global triggers, forcing you into avatars, etc that are being using in Udon worlds such as The Great Pug.\n\nNote: This might break some Udon-based game worlds, such as Among Us. Disable the mod in settings before joining one.","Author":"@Moons","dllVersion":"1.0.1","download":"https://github.com/M-oons/VRChat-Mods/releases/download/AntiUdonExploits-1.0.1/AntiUdonExploits.dll"},{"name":"JoinNotifier","version":"Build 1004","desc":"This mod shows people joining and leaving the instance you're in.\nConfigurable per instance type, notification elements (sound/icon/names), and friend status (show everyone/friends only/highlight friends)","Author":"knah","dllVersion":"0.2.7.1","download":"https://github.com/knah/VRCMods/releases/download/updates-2020-11-29/JoinNotifier.dll"},{"name":"VRCBhapticsIntegration","version":"Build 1017","desc":"Allows you to use your bHaptics Gear to feel touch in VRChat when using bHaptics Compatible Avatars.\nIncludes a Unity Package for you to use in the Unity Editor to create your own custom bHaptics Compatible Avatars.\nCurrently Supports Tactot (Haptic Vest for Torso), Tactosy (Haptic Sleeve for Arms) and Tactal (Haptic Face Cushion for HMD).\n\nbHaptics Avatar World\nhttps://vrchat.com/home/world/wrld_84e1a940-c139-44dc-8ddf-e2a3c5b2a4d9\n\nUnity Package\nhttps://github.com/HerpDerpinstine/VRCBhapticsIntegration/releases/download/v1.0.2/VRCBhapticsIntegration_v1.0.2.unitypackage","Author":"Herp Derpinstine","dllVersion":"1.0.2","download":"https://github.com/HerpDerpinstine/VRCBhapticsIntegration/releases/download/v1.0.2/VRCBhapticsIntegration.dll"},{"name":"Game Version","version":"MelonLoader Version","desc":"A VRChat mod that allows you to add buttons to your menu that puts videos on VRC video players. All through a text document.","Author":"Description","dllVersion":"Author","download":"https://github.com/UshioHiko/VRCVideoLibrary/releases/download/0.6.4/VRCVideoLibrary.dll"},{"name":"Friends+ Home","version":"Build 1017","desc":"Allows changing instance type of your home world to whatever you want.\nSetting it to public will choose a random public instance if one is available.\nUIExpansionKit 0.2.0 or newer recommended for in-game settings.","Author":"knah","dllVersion":"1.0.0","download":"https://github.com/knah/VRCMods/releases/download/updates-2020-11-22/FriendsPlusHome.dll"},{"name":"UI Expansion Kit","version":"Build 1017","desc":"This mod provides Mod Settings UI (for mods that use ModPrefs, look in lower right corner of VRChat settings menu), and an API for other mods to add non-intrusive extra buttons to other menus.","Author":"knah","dllVersion":"0.2.0","download":"https://github.com/knah/VRCMods/releases/download/updates-2020-11-22/UIExpansionKit.dll"},{"name":"Advanced Safety","version":"Build 1017","desc":"Features:\n* Set hard limits on avatar features, such as polygon count, audio sources, and some other things\n* Reduce crashes\n* Improve performance\n* Remove annoying spawn sounds or global sounds\n* Remove some fullscreen effects (this one is unreliable)\n* Avatars over the limit are not replaced by a gray robot. Instead, elements over limits are removed, with the rest of the avatar kept intact.\n* Hide all avatars of a specific author (requires UIExpansionKit, button is in user details menu)\n* Hide a specific avatar, no matter who uses it (requires UIExpansionKit, button in in user quick menu)\n* Hide portals from blocked users or non-friends, and portals dropped on you\n* That blocked user will no longer be able to portal drop you\n\nAll numeric limits are configurable.\nConfigurable for friends and vanilla 'show avatar' button.","Author":"knah","dllVersion":"1.2.3","download":"https://github.com/knah/VRCMods/releases/download/updates-2020-11-22/AdvancedSafety.dll"},{"name":"CameraMinus","version":"Build 1017","desc":"A simple mod that allows resizing the camera, zooming it in/out and hiding camera lens.\nRequires UIExpansionKit - new buttons are added to Camera QuickMenu expansion.","Author":"knah","dllVersion":"1.1.0","download":"https://github.com/knah/VRCMods/releases/download/updates-2020-11-22/CameraMinus.dll"},{"name":"Final IK Sanity","version":"2020.4.1p5","desc":"Make it much more difficult for FinalIK Scripts in VRChat to crash you.","Author":"Ben","dllVersion":"1.0.0","download":"https://github.com/BenjaminZehowlt/FinalIKSanity/releases/download/1.0.0/FinalIKSanity.dll"},{"name":"BTKSASelfPortrait","version":"Build 1017","desc":"BTKSASelfPortrait is a small mod that adds a simple face camera that can be used in both desktop or in VR, you can toggle the camera on from the UIExpansionKit panel on the QuickMenu.\n\nLet me know if it doesn't work too well on your headset, I only have a Vive Pro to test on!","Author":"DDAkebono","dllVersion":"1.1.1","download":"https://github.com/ddakebono/BTKSASelfPortrait/releases/download/1.1.1/BTKSASelfPortrait.dll"}
+]
+function rmdir(d=dir.value){
+return`
+DEL /F/Q/S "${d+input3.value}mods${input3.value}*.*"
+rmdir "${d+input3.value}mods"
+`
+}
+var items=[document.createElement('div'),document.createElement('div'),document.createElement('div')]
+vrc_.forEach(e=>{
+if(window[e.name]){
+window[e.name+'num']++;
+console.log('Dups of',e.name,window[e.name+'num'])
+return}
+window[e.name]=true;
+window[e.name+'num']=0;
+var a=document.createElement('input')
+var b=document.createElement('span')
+var c=document.createElement('br')
+var d=document.createElement('span')
+a.type='checkbox'
+a.id=e.name
+b.className='name'
+a.value=e.download
+b.innerText=e.name+' By '+e.Author
+d.innerText='\n'+e.desc+'\n'
+d.className='desc'
+a.onclick=setup
+items[0].append(a)
+items[0].append(b)
+items[0].append(d)
+items[0].append(c)
+})
+document.body.append(items[0]);
+function setup(){
+var a=[];
+var c=[];
+vrc_.forEach(b=>{
+if(document.getElementById(b.name).checked&&!window[b.download]){
+c.push('move "'+b.download.split('/').pop()+'" '+'"'+dir.value+input2.value+'"\n'+`title moving ${b.download.split('/').pop()}\ntimeout /t 0.2`)
+a.push(mD(b.download));window[b.download]=1;setTimeout(e=>{window[b.download]=0},1000)}
+})
+window.downloads=a.join('\n')
+var mods=[];
+mods=downloads
+window.mods=mods
+window.downloads2=c.join('\n')
+window.downloads=a.join('\n');
+}
+setInterval(setup,2000)
+function Kill(e){return `taskkill /F /IM "${e.includes('.exe')?e:e+'.exe'}" /T\ntitle stopping ${e.includes('.exe')?e:e+'.exe'}`}
+function save(){
+localStorage.dir=dir.value
+localStorage.dir2=dir2.value
+window.names={}
+vrc_.forEach(e=>{
+if(!names[e.name]){
+names[e.name]=1;
+console.log(document.getElementById(e.name).checked,e.name)
+localStorage.setItem(e.name,document.getElementById(e.name).checked);
+}
+else console.log('dups',e.name)
+})
+    }
+    function Uninstaller() {
+        download('This is the VRChat uninstaller.bat', rmdir() + 'del %0');
+    }
+function download(filename='mod_installer.bat', text=`
+@echo off
+
+:: BatchGotAdmin
+:-------------------------------------
+REM  --> Check for permissions
+    IF "%PROCESSOR_ARCHITECTURE%" EQU "amd64" (
+>nul 2>&1 "%SYSTEMROOT%${input3.value}SysWOW64${input3.value}cacls.exe" "%SYSTEMROOT%${input3.value}SysWOW64${input3.value}config${input3.value}system"
+) ELSE (
+>nul 2>&1 "%SYSTEMROOT%${input3.value}system32${input3.value}cacls.exe" "%SYSTEMROOT%${input3.value}system32${input3.value}config${input3.value}system"
+)
+
+REM --> If error flag set, we do not have admin.
+if '%errorlevel%' NEQ '0' (
+    echo Requesting administrative privileges...
+    goto UACPrompt
+) else ( goto gotAdmin )
+
+:UACPrompt
+    echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%${input3.value}getadmin.vbs"
+    set params= %*
+    echo UAC.ShellExecute "cmd.exe", "/c ""%~s0"" %params:"=""%", "", "runas", 1 >> "%temp%${input3.value}getadmin.vbs"
+
+    "%temp%${input3.value}getadmin.vbs"
+    del "%temp%${input3.value}getadmin.vbs"
+    exit /B
+
+:gotAdmin
+    pushd "%CD%"
+    CD /D "%~dp0"
+:--------------------------------------   
+powershell -Command "Install-Module PSWindowsUpdate"
+powershell -Command "Get-WindowsUpdate"
+powershell -Command "Install-WindowsUpdate"
+title deleting all current mods
+title installing melons
+DEL /F/Q/S "${dir.value + input2.value + input3.value}*.dll"
+DEL /F/Q/S "${dir.value + input2.value}"
+echo emptying dir
+title emptying dir
+cd /D c:\ & cd %SYSTEMROOT% & cd %userprofile% & mkdir Desktop${input3.value}UnI & move ${'"' + dir2.value + input3.value + `This is the VRChat uninstaller.bat" Desktop`}
+cd Desktop
+title downloading MelonLoader.Installer.exe
+title run the melon loader files into game directory
+
+powershell -Command "Invoke-webRequest https://github.com/HerpDerpinstine/MelonLoader/releases/latest/download/MelonLoader.Installer.exe -Outfile MelonLoader.Installer.exe
+MelonLoader.Installer.exe
+title deleting MelonLoader.Installer.exe
+del MelonLoader.Installer.exe
+cd ..
+title making mods folder
+mkdir "${dir.value+input2.value}"
+title changing dir
+cd ${dir2.value}
+title installing mods
+title installing mods
+${downloads}
+title moving mods to game mods folder
+${downloads2}
+title starting VRChat.exe
+timeout /t 0.2
+title deleting file
+cd..
+cd ${dir2.value}
+title endind src
+${Kill('VRChat')}
+timeout /t 0.2
+cd /D ${dir.value}
+PowerShell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('Finished instaling mods')"
+${msg('There is a file on ur desktop called "This is the VRChat uninstaller" use this to uninstall all vrchat mods')}
+setlocal
+:PROMPT
+SET /P AREYOUSURE=Do u want to restart vrchat(Y/[N])?
+IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
+taskkill /F /IM "VRChat.exe" /T
+start steam://rungameid/438100
+ECHO "starting VRchat"
+echo ... rest of file ...
+
+
+:END
+endlocal
+title sys file scan
+sfs /SCANNOW
+del %0
+`,A=1) {
+    text = !A?text:a(text.split('\n'), '\n');
+
+window.text=text
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
+function load(){
+dir.value=localStorage.dir
+dir2.value=localStorage.dir2
+console.log('Loading','saves')
+var time=0;
+window.names={}
+vrc_.forEach(e=>{
+if(!names[e.name]){
+document.getElementById(e.name).checked=!!0;
+setTimeout(()=>{
+console.log(localStorage.getItem(e.name),e.name);
+if(eval(localStorage.getItem(e.name))){document.getElementById(e.name).click();document.getElementById(e.name).checked=true;}
+names[e.name]=1;
+},time);
+time+=50
+}
+else console.log('dups',e.name)
+})
+}
+//DEL /F/Q/S "${dir.value+input2.value+input3.value}"*.dll
+window.onunload=save;
+Download.onclick=function(){
+var name=prompt('enter file name')
+    download(`${name.length ? name : 'Installer'}.bat`);
+    Uninstaller();
+}
+function pShell(command){return`powershell -Command "${command}"`}
+function mD(url,move,run){
+return `title downloading ${url.split('/').pop()}
+${run?`cd ${move}\n`:''}powershell -Command "Invoke-webRequest ${url} -Outfile ${url.split('/').pop()}
+echo downloading ${url.split('/').pop()}
+${run?(url.split('/').pop()):''}`
+}
+window.onload=load;
+</script>
