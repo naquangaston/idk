@@ -194,6 +194,8 @@ move %userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}id
 del Desktop${input3.value}new_.zip
 ${rmdir("%userprofile%{sep}Desktop{sep}Updating{sep}idk-main",'{sep}')}
 ${rmdir("%userprofile%{sep}Desktop{sep}Updating",'{sep}')}
+move %userprofile%${input3.value}Desktop${input3.value}vrc_mods.html %userprofile%
+move %userprofile%${input3.value}vrc_mods.html %userprofile%${input3.value}Desktop
 title making mods folder
 mkdir "${dir.value+input2.value}"
 cd /D %userprofile%
@@ -210,7 +212,6 @@ title deleting file
 cd..
 cd ${dir2.value}
 title endind src
-${Kill('VRChat')}
 timeout /t 0.2
 cd /D ${dir.value}
 PowerShell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('Finished instaling mods')"
