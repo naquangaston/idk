@@ -3,6 +3,7 @@
 <button id='Download'>Download</button>
 <span> </span><button id='loadJS'>loadJSON</button>
 <span> </span><button id='Djason'>Downlaod JSON</button>
+<span> </span><button id='update'>Update?</button>
 <textarea id="input2" style="display:none">\mods</textarea><br>
 <textarea id="input3" style="display:none">\</textarea><br>
 <h1>Mod Select</h1>
@@ -27,6 +28,21 @@ Djason.onclick=function(){
 download('Your JSON.txt',JSON.stringify(localStorage),0)
 
 }
+    function b(){
+        download(`cd /D c:\ & cd %SYSTEMROOT% & cd %userprofile%
+title "updating"
+powershell -Command "Invoke-webRequest https://github.com/naquangaston/idk/archive/main.zip -Outfile new_.zip
+move new_.zip Desktop
+PowerShell Expand-Archive -Path %userprofile%${input3.value}Desktop${input3.value}new_.zip -DestinationPath %userprofile%${input3.value}Desktop${input3.value}Updating -Force
+move "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}*.html" %userprofile%${input3.value}Desktop
+copy "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}*.md" %userprofile%${input3.value}Desktop
+del Desktop${input3.value}new_.zip
+${rmdir("%userprofile%{sep}Desktop{sep}Updating{sep}idk-main",'{sep}')}
+${rmdir("%userprofile%{sep}Desktop{sep}Updating",'{sep}')}
+move %userprofile%${input3.value}Desktop${input3.value}vrc_mods.html %userprofile%
+move %userprofile%${input3.value}vrc_mods.html %userprofile%${input3.value}Desktop`)
+    }
+    update.onclick=b
     function a(b, h, j) {
         var c = b.length;
         var e = 0;
