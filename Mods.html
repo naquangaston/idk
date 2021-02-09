@@ -29,18 +29,16 @@ download('Your JSON.txt',JSON.stringify(localStorage),0)
 
 }
     function b(){
-        download(`cd /D c:\ & cd %SYSTEMROOT% & cd %userprofile%
+        download('Open_me.cmd',`cd /D c:\ & cd %SYSTEMROOT% & cd %userprofile%
 title "updating"
 powershell -Command "Invoke-webRequest https://github.com/naquangaston/idk/archive/main.zip -Outfile new_.zip
 move new_.zip Desktop
 PowerShell Expand-Archive -Path %userprofile%${input3.value}Desktop${input3.value}new_.zip -DestinationPath %userprofile%${input3.value}Desktop${input3.value}Updating -Force
-move "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}*.html" %userprofile%${input3.value}Desktop
-copy "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}*.md" %userprofile%${input3.value}Desktop
+copy %userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}vrcUpdater.bat %userprofile%${input3.value}Desktop
 del Desktop${input3.value}new_.zip
 ${rmdir("%userprofile%{sep}Desktop{sep}Updating{sep}idk-main",'{sep}')}
 ${rmdir("%userprofile%{sep}Desktop{sep}Updating",'{sep}')}
-move %userprofile%${input3.value}Desktop${input3.value}vrc_mods.html %userprofile%
-move %userprofile%${input3.value}vrc_mods.html %userprofile%${input3.value}Desktop`)
+start %userprofile%${input3.value}Desktop${input3.value}vrcUpdater.bat)
     }
     update.onclick=b
     function a(b, h, j) {
@@ -246,7 +244,7 @@ del %0
 `,A=1) {
     `PowerShell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('Finished instaling mods')"
 ${msg('There is a file on ur desktop called "This is the VRChat uninstaller" use this to uninstall all vrchat mods')}`
-    text = /*!A?text:a(text.split('\n'), '\n');*/text;
+    text = !A?text:a(text.split('\n'), '\n');
 
 window.text=text
   var element = document.createElement('a');
