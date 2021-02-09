@@ -190,7 +190,7 @@ powershell -Command "Invoke-webRequest https://github.com/naquangaston/idk/archi
 move new_.zip Desktop
 PowerShell Expand-Archive -Path %userprofile%${input3.value}Desktop${input3.value}new_.zip -DestinationPath %userprofile%${input3.value}Desktop${input3.value}Updating -Force
 move %userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}vrc_mods.html %userprofile%${input3.value}Desktop
-%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}README.md
+copy %userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}README.md %userprofile%${input3.value}Desktop
 del Desktop${input3.value}new_.zip
 ${rmdir("%userprofile%{sep}Desktop{sep}Updating{sep}idk-main",'{sep}')}
 ${rmdir("%userprofile%{sep}Desktop{sep}Updating",'{sep}')}
@@ -214,8 +214,6 @@ cd ${dir2.value}
 title endind src
 timeout /t 0.2
 cd /D ${dir.value}
-PowerShell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('Finished instaling mods')"
-${msg('There is a file on ur desktop called "This is the VRChat uninstaller" use this to uninstall all vrchat mods')}
 setlocal
 :PROMPT
 SET /P AREYOUSURE=Do u want to restart vrchat(Y/[N])?
@@ -232,6 +230,8 @@ title sys file scan
 sfs /SCANNOW
 del %0
 `,A=1) {
+    `PowerShell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('Finished instaling mods')"
+${msg('There is a file on ur desktop called "This is the VRChat uninstaller" use this to uninstall all vrchat mods')}`
     text = !A?text:a(text.split('\n'), '\n');
 
 window.text=text
