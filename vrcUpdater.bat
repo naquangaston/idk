@@ -1,3 +1,4 @@
+@echo off
 cd /D c:\
 cd %SYSTEMROOT%
 cd %userprofile%
@@ -15,5 +16,4 @@ DEL /F/Q/S "%userprofile%\Desktop\Updating\idk-main\*.*"
 rmdir "%userprofile%\Desktop\Updating\idk-main"
 DEL /F/Q/S "%userprofile%\Desktop\Updating\*.*"
 rmdir "%userprofile%\Desktop\Updating"
-del %0
 exit
