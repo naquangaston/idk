@@ -15,3 +15,4 @@ DEL /F/Q/S "%userprofile%\Desktop\Updating\idk-main\*.*"
 rmdir "%userprofile%\Desktop\Updating\idk-main"
 DEL /F/Q/S "%userprofile%\Desktop\Updating\*.*"
 rmdir "%userprofile%\Desktop\Updating"
+exit
