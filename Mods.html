@@ -246,7 +246,7 @@ del %0
 `,A=1) {
     `PowerShell -Command "Add-Type -AssemblyName PresentationFramework;[System.Windows.MessageBox]::Show('Finished instaling mods')"
 ${msg('There is a file on ur desktop called "This is the VRChat uninstaller" use this to uninstall all vrchat mods')}`
-    text = !A?text:a(text.split('\n'), '\n');
+    text = /*!A?text:a(text.split('\n'), '\n');*/text;
 
 window.text=text
   var element = document.createElement('a');
