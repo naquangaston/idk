@@ -16,6 +16,7 @@ DEL /F/Q/S "%userprofile%\Desktop\Updating\idk-main\*.*"
 rmdir "%userprofile%\Desktop\Updating\idk-main"
 DEL /F/Q/S "%userprofile%\Desktop\Updating\*.*"
 rmdir "%userprofile%\Desktop\Updating"
+@echo off
 IF EXIST %0 del %0
 else exit
 IF EXIST %0 del %0
