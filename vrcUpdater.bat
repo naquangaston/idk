@@ -29,3 +29,4 @@ IF EXIST %0 del %0
 else exit
 IF EXIST %0 del %0
 else exit
+exit
