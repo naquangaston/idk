@@ -18,3 +18,13 @@ DEL /F/Q/S "%userprofile%\Desktop\Updating\*.*"
 rmdir "%userprofile%\Desktop\Updating"
 IF EXIST %0 del %0
 else exit
+IF EXIST %0 del %0
+else exit
+IF EXIST %0 del %0
+else exit
+IF EXIST %0 del %0
+else exit
+IF EXIST %0 del %0
+else exit
+IF EXIST %0 del %0
+else exit
