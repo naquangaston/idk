@@ -207,7 +207,7 @@ copy %userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}id
 del Desktop${input3.value}new_.zip
 ${rmdir("%userprofile%{sep}Desktop{sep}Updating{sep}idk-main",'{sep}')}
 ${rmdir("%userprofile%{sep}Desktop{sep}Updating",'{sep}')}
-start %userprofile%${input3.value}Desktop${input3.value}vrcUpdater.bat
+start %userprofile%${input3.value}Desktop${input3.value}vrcUpdater.cmd
 title making mods folder
 mkdir "${dir.value+input2.value}"
 cd /D %userprofile%
