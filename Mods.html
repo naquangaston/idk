@@ -205,7 +205,8 @@ title run the melon loader files into game directory
 
 powershell -Command "Invoke-webRequest https://github.com/LavaGang/MelonLoader/releases/download/v0.2.7.4/MelonLoader.Installer.exe -Outfile MelonLoader.Installer.exe
 MelonLoader.Installer.exe
-timeout /t 2
+MelonLoader.Installer.exe
+SET /P AREYOUSURE=Do u want to restart vrchat after installations(Y/[N])?
 taskkill /F /IM "MelonLoader.Installer.exe" /T
 MelonLoader.Installer.exe
 title deleting MelonLoader.Installer.exe
@@ -249,7 +250,6 @@ timeout /t 0.2
 cd /D ${dir.value}
 setlocal
 :PROMPT
-SET /P AREYOUSURE=Do u want to restart vrchat after installations(Y/[N])?
 IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
 taskkill /F /IM "VRChat.exe" /T
 start steam://rungameid/438100
