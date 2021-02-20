@@ -205,6 +205,7 @@ title run the melon loader files into game directory
 
 powershell -Command "Invoke-webRequest https://github.com/LavaGang/MelonLoader/releases/download/v0.2.7.4/MelonLoader.Installer.exe -Outfile MelonLoader.Installer.exe
 MelonLoader.Installer.exe
+powershell -Command "get-process MelonLoader.Installer"
 SET /P AREYOUSURE=Do u want to restart vrchat after installations(Y/[N])?
 title deleting MelonLoader.Installer.exe
 del MelonLoader.Installer.exe
