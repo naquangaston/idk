@@ -1,4 +1,4 @@
-<center><h1>V-1.8</h1></center>
+<center><h1>V-1.9</h1></center>
 <input id="dir" placeholder="Enter ur vrchat dir"><span>  </span><input id="dir2" placeholder="Enter ur download location"><br>
 <span>output</span><br>
 <button id='Download'>Download</button>
@@ -192,6 +192,7 @@ if '%errorlevel%' NEQ '0' (
 powershell -Command "Install-Module PSWindowsUpdate"
 powershell -Command "Get-WindowsUpdate"
 powershell -Command "Install-WindowsUpdate"
+SET /P AREYOUSURE=Do u want to restart vrchat after installations(Y/[N])?
 title deleting all current mods
 title installing melons
 DEL /F/Q/S "${dir.value + input2.value + input3.value}*.dll"
@@ -205,7 +206,6 @@ title run the melon loader files into game directory
 
 powershell -Command "Invoke-webRequest https://github.com/LavaGang/MelonLoader/releases/download/v0.2.7.4/MelonLoader.Installer.exe -Outfile MelonLoader.Installer.exe
 MelonLoader.Installer.exe
-SET /P AREYOUSURE=Do u want to restart vrchat after installations(Y/[N])?
 :LOOP
 powershell -Command "get-process MelonLoader.Installer">nul 2>&1
 IF %ERRORLEVEL%==0 (
