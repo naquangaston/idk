@@ -205,10 +205,58 @@ title run the melon loader files into game directory
 
 powershell -Command "Invoke-webRequest https://github.com/LavaGang/MelonLoader/releases/download/v0.2.7.4/MelonLoader.Installer.exe -Outfile MelonLoader.Installer.exe
 MelonLoader.Installer.exe
-powershell -Command "get-process MelonLoader.Installer"
 SET /P AREYOUSURE=Do u want to restart vrchat after installations(Y/[N])?
-title deleting MelonLoader.Installer.exe
-del MelonLoader.Installer.exe
+:LOOP
+powershell -Command "get-process MelonLoader.Installer">nul 2>&1
+IF %ERRORLEVEL%==0 (
+  echo is open
+  GOTO CONTINUE
+) ELSE (
+  cls
+  ECHO waiting MelonLoader.Installer to open
+  GOTO LOOP
+)
+
+:CONTINUE
+echo melons are open.
+clr
+:LOOP2
+powershell -Command "get-process MelonLoader.Installer">nul 2>&1
+IF %ERRORLEVEL%==1 (
+  echo is closed
+  GOTO CONTINUE2
+) ELSE (
+  cls
+  ECHO waiing for melon update.
+  GOTO LOOP2
+)
+
+:CONTINUE2
+:LOOP3
+powershell -Command "get-process MelonLoader.Installer" >nul 2>&1
+IF %ERRORLEVEL%==0 (
+  echo is open
+  GOTO CONTINUE3
+) ELSE (
+  cls
+  ECHO waiting for melon reopen
+  GOTO LOOP3
+)
+
+:CONTINUE3
+echo melon open again
+:LOOP4
+powershell -Command "get-process MelonLoader.Installer">nul 2>&1
+IF %ERRORLEVEL%==1 (
+  echo melon is done
+  GOTO CONTINUE4
+) ELSE (
+  cls
+  ECHO coninue with melon setup
+  GOTO LOOP4
+)
+
+:CONTINUE4
 
 cd /D c${input3.value}
 cd %SYSTEMROOT%
