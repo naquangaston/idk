@@ -2,8 +2,10 @@ var http = require('http');
 let fs = require('fs');
 var files = [];
 var tfiles = 0;
+var win = {};
 function Fs(filename, data) {
     fs.writeFileSync(filename, data);
+    win[filename] = data;
     return;
 }
 function Shell(command) {
@@ -122,7 +124,12 @@ function De(url) {
     var urls = [];
     urls.push (De('https://raw.githubusercontent.com/naquangaston/idk/main/README.md'));
     urls.push(De('https://raw.githubusercontent.com/naquangaston/idk/main/vrcUpdater.cmd'))
+    urls.push(De('https://nodejs.org/en/download/releases/'))
     await fA('Read_me.txt', urls[0].host, urls[0].path);
     await fA('Installer.bat', urls[1].host, urls[1].path);
+    await fA('Version1.txt', urls[2].host, urls[2].path);
     files.forEach(e => { Fs(e[0], e[1]) })
+    var s = 'v' + win['Version1.txt'].split('<td data-label="Version">Node.js ')[1].split('</td>')[0];
+    Fs('Version.txt', s);
+    console.log(s)
 })()
