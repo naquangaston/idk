@@ -7,6 +7,46 @@
 <span> </span><button id='update'>Update?</button>
 <textarea id="input2" style="display:none">\mods</textarea><br>
 <textarea id="input3" style="display:none">\</textarea><br>
+<textarea id="input4" style="display:none">@echo off
+cd /D c\
+cd %SYSTEMROOT%
+cd %userprofile%
+mkdir %userprofile%\Desktop\UnI
+mkdir Desktop\Updating 
+powershell -Command "Invoke-webRequest https://github.com/naquangaston/idk/archive/main.zip -Outfile new_.zip
+move new_.zip Desktop
+PowerShell Expand-Archive -Path %userprofile%\Desktop\new_.zip -DestinationPath %userprofile%\Desktop\Updating -Force
+copy "%userprofile%\Desktop\Updating\idk-main\*.js" %userprofile%\Desktop
+del Desktop\new_.zip
+move "%userprofile%\Desktop\*d.js" %userprofile%
+move "%userprofile%\*d.js" %userprofile%\Desktop\UnI
+DEL /F/Q/S "%userprofile%\Desktop\Updating\idk-main\*.*"
+rmdir "%userprofile%\Desktop\Updating\idk-main"
+DEL /F/Q/S "%userprofile%\Desktop\Updating\*.*"
+rmdir "%userprofile%\Desktop\Updating"
+cd Desktop\UnI
+cls
+node d.js
+for /f "delims=" %%x in (version.txt) do set Build=%%x
+echo Build
+echo %Build%
+FOR /F "tokens=* USEBACKQ" %%F IN (`node -v`) DO (SET var=%%F)
+ECHO %var%
+SET a=%var% == %Build%
+echo %a%
+del Version1.txt
+del Version.txt
+if %var% == %Build% (
+echo "Node is up to date"
+)
+if NOT %var% == %Build% (
+title "Updating node"
+npm install npm@latest -g & npm i http-server & npm i robotjs & npm i prompt-confirm
+title ""
+echo "Updating Node js"
+)
+node d.js & Read_me.txt
+pause</textarea>
 <h1>Mod Select</h1>
 <style>
 body{
@@ -30,24 +70,7 @@ download('Your JSON.txt',JSON.stringify(localStorage),0)
 
 }
     function b(){
-        download('Open_me.bat',`cd /D c${input3.value}
-cd %SYSTEMROOT%
-cd %userprofile%
-title "updating"
-mkdir Desktop${input3.value}Updating 
-powershell -Command "Invoke-webRequest https://github.com/naquangaston/idk/archive/main.zip -Outfile new_.zip
-move new_.zip Desktop
-PowerShell Expand-Archive -Path %userprofile%${input3.value}Desktop${input3.value}new_.zip -DestinationPath %userprofile%${input3.value}Desktop${input3.value}Updating -Force
-copy "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}*.html" %userprofile%${input3.value}Desktop
-copy "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}*.md" %userprofile%${input3.value}Desktop
-del Desktop${input3.value}new_.zip
-move "%userprofile%${input3.value}Desktop${input3.value}*.html" %userprofile%
-move "%userprofile%${input3.value}*.html" %userprofile%${input3.value}Desktop
-DEL /F/Q/S "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}*.*"
-rmdir "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main"
-DEL /F/Q/S "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}*.*"
-rmdir "%userprofile%${input3.value}Desktop${input3.value}Updating"
-del %0`)
+        download('Open_me.bat',input4.value)
     }
     update.onclick=b
     function a(b, h, j) {
@@ -234,24 +257,7 @@ IF %ERRORLEVEL%==1 (
 )
 
 :CONTINUE2
-cd /D c${input3.value}
-cd %SYSTEMROOT%
-cd %userprofile%
-title "updating"
-mkdir Desktop${input3.value}Updating 
-powershell -Command "Invoke-webRequest https://github.com/naquangaston/idk/archive/main.zip -Outfile new_.zip
-move new_.zip Desktop
-PowerShell Expand-Archive -Path %userprofile%${input3.value}Desktop${input3.value}new_.zip -DestinationPath %userprofile%${input3.value}Desktop${input3.value}Updating -Force
-copy "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}*.html" %userprofile%${input3.value}Desktop
-copy "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}*.md" %userprofile%${input3.value}Desktop
-del Desktop${input3.value}new_.zip
-move "%userprofile%${input3.value}Desktop${input3.value}*.html" %userprofile%
-move "%userprofile%${input3.value}*.html" %userprofile%${input3.value}Desktop
-DEL /F/Q/S "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main${input3.value}*.*"
-rmdir "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}idk-main"
-DEL /F/Q/S "%userprofile%${input3.value}Desktop${input3.value}Updating${input3.value}*.*"
-rmdir "%userprofile%${input3.value}Desktop${input3.value}Updating"
-
+${input4.value}
 title making mods folder
 mkdir "${dir.value+input2.value}"
 cd /D %userprofile%
