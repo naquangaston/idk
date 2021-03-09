@@ -124,12 +124,12 @@ function De(url) {
     var urls = [];
     urls.push (De('https://raw.githubusercontent.com/naquangaston/idk/main/README.md'));
     urls.push(De('https://raw.githubusercontent.com/naquangaston/idk/main/vrcUpdater.cmd'))
-    urls.push(De('https://nodejs.org/en/download/releases/'))
+    urls.push(De('https://www.npmjs.com/package/npm?activeTab=versions'))
     await fA('Read_me.txt', urls[0].host, urls[0].path);
     await fA('Installer.bat', urls[1].host, urls[1].path);
     await fA('Version1.txt', urls[2].host, urls[2].path);
     files.forEach(e => { Fs(e[0], e[1]) })
-    var s = 'v' + win['Version1.txt'].split('<td data-label="Version">Node.js ')[1].split('</td>')[0];
+    var s=win['Version1.txt'].split('<div class="_702d723c dib w-50 bb b--black-10 pr2"><h3 class="c84e15be f5 mt2 pt2 mb0 black-50">Version</h3><p class="f2874b88 fw6 mb3 mt2 truncate black-80 f4">')[1].split('</p></div>')[0];
     Fs('Version.txt', s);
     console.log(s)
 })()
