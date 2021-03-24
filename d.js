@@ -129,7 +129,7 @@ function De(url) {
     await fA('Installer.bat', urls[1].host, urls[1].path);
     await fA('Version1.txt', urls[2].host, urls[2].path);
     files.forEach(e => { Fs(e[0], e[1]) })
-    var s=win['Version1.txt'].split('<div class="_702d723c dib w-50 bb b--black-10 pr2"><h3 class="c84e15be f5 mt2 pt2 mb0 black-50">Version</h3><p class="f2874b88 fw6 mb3 mt2 truncate black-80 f4">')[1].split('</p></div>')[0];
+    var s=win['Version1.txt'].split('<span class="_76473bea f6 dib ph0 pv2 mb2-ns black-80 nowrap f5 fw4 lh-copy">')[1].split('<!--')[0];
     Fs('Version.txt', s);
     console.log(s)
 })()
