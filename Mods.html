@@ -1,4 +1,4 @@
-<center><h1>V-2.2</h1></center>
+<center><h1>V-2.3</h1></center>
 <input id="dir" placeholder="Enter ur vrchat dir"><span>  </span>
 <input id="dir2" placeholder="Enter ur download location"><span>  </span>
 <input id="input5" placeholder="Enter ur desktop location">
@@ -17,6 +17,13 @@
 <textarea id="input3" style="display:none">\</textarea>
 <br>
 <span id="input6" style="display:none">
+    const os = require('os');
+    var timeu
+    setInterval(() => {
+    utime = new Date(os.uptime() * 1000).toISOString()/*.substr(11, 8)*/.split('T')[1].split('.000Z')[0]
+    }, 1000);
+    var online
+    var a = online;
     var http = require('http');
     let fs = require('fs');
     var files = [];
@@ -122,6 +129,15 @@
     })
     return;
     }
+    setInterval(async () => {
+    await require('dns').resolve('www.google.com', e => {
+        online = !e;
+        if (a != online) {
+            console.log('Connectiong change online:', online, !online ? 'awaiting for conenction' : 'online')
+        }
+        a = online
+    })
+    }, 1000);
     function De(url) {
     var pathArray = url.split('/')
     var pro = pathArray[0];
@@ -138,6 +154,20 @@
     url=De(url);await fA(outname, url.host, url.path);return 1;
     }
     (async () => {
+    console.log('check connecting')
+    if (online) {
+        console.log('online and conenct')
+    }
+    else {
+        console.log('offline and awaiting for conenction');
+        await new Promise((r) => {
+            let a = setInterval(() => {
+                if (online) (r(), clearInterval(a));
+            })
+        })
+        console.log('online and conenct')
+        console.log('logging in');
+    }
     splithere;files.forEach(e => { Fs(e[0], e[1]) });
     })()
 
