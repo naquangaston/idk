@@ -186,7 +186,7 @@ copy "%userprofile%\Desktop\Updating\idk-main\*.html" %userprofile%\Desktop
 copy "%userprofile%\Desktop\Updating\idk-main\*.md" %userprofile%\Desktop
 del Desktop\new_.zip
 move "%userprofile%\Desktop\*.html" %userprofile%
-move "%userprofile%\*.html" %userprofile%\Desktop
+move "%userprofile%\*.html" Desktop
 DEL /F/Q/S "%userprofile%\Desktop\Updating\idk-main\*.*"
 rmdir "%userprofile%\Desktop\Updating\idk-main"
 DEL /F/Q/S "%userprofile%\Desktop\Updating\*.*"
@@ -217,7 +217,7 @@ Read_me.txt
 
     }
     function b() {
-        download('Open_me.bat', input4.value.split('Desktop').join(prompt('enter location for desktop')));
+        download('Open_me.bat', input4.value.split('%userprofile%\\Desktop').join((input5.value)));
     }
     update.onclick = b
     function a(b, h, j) {
